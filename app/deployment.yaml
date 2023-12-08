@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: p4nh4-react-app-deployment
+  labels:
+    app: p4nh4-react-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: p4nh4-react-app
+  template:
+    metadata:
+      labels:
+        app: p4nh4-react-app
+    spec:
+      containers:
+        - name: p4nh4-react-app
+          image: kshrdautopilot/p4nh4-react-app
+          ports:
+            - containerPort: 3000
