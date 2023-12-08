@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: p4nh4-react-app-ingress
+  namespace: p4nh4
+spec:
+  tls:
+    - hosts:
+        - demo.auto-pilot
+      secretName: demo-auto-pilot-cert
+  rules:
+    - host: demo.auto-pilot
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: p4nh4-react-app-svc
+                port:
+                  number: 3000
